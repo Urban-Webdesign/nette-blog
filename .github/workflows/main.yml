@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 name: 🚀 Deploy website
 jobs:
   web-deploy:
@@ -23,11 +23,11 @@ jobs:
         if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install --no-interaction --no-progress
 
-      - name: 🔗 NPM install
-        run: npm install
-
-      - name: 🔨 Build project
-        run: npm run build
+#      - name: 🔗 NPM install
+#        run: npm install
+#
+#      - name: 🔨 Build project
+#        run: npm run build
 
       - name: 📂 Deploy to server
         uses: easingthemes/ssh-deploy@v2.1.5
